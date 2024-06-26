@@ -170,6 +170,7 @@ class _NoteScreenState extends State<NoteScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xFFFFD700),
         onPressed: () {
           Color selectedColor = AppStyle
               .cardsColor[_noteBox!.length % AppStyle.cardsColor.length];

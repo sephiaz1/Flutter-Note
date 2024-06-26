@@ -112,8 +112,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _pinScreen(),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.blue.shade300, Colors.blue.shade800],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Center(
+          child: _pinScreen(),
+        ),
       ),
     );
   }
@@ -124,7 +133,18 @@ class _HomePageState extends State<HomePage> {
       children: [
         Text(
           _isCreatingPin ? 'Create your PIN' : 'Enter your PIN',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            shadows: [
+              Shadow(
+                blurRadius: 10.0,
+                color: Colors.black45,
+                offset: Offset(2.0, 2.0),
+              ),
+            ],
+          ),
         ),
         SizedBox(height: 20),
         PinPad(
@@ -163,7 +183,7 @@ class _PinPadState extends State<PinPad> {
       width: 300,
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.white.withOpacity(0.9),
         border: Border.all(color: Colors.blueAccent, width: 2),
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
@@ -221,14 +241,27 @@ class _PinPadState extends State<PinPad> {
               const SizedBox(width: 10),
               IconButton(
                 onPressed: _onDeletePressed,
-                icon: const Icon(Icons.backspace),
+                icon: const Icon(Icons.backspace, color: Colors.blueAccent),
               ),
             ],
           ),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: widget.onSubmit,
-            child: const Text('Submit'),
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+              backgroundColor: Colors.blueAccent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            child: const Text(
+              'Submit',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
           ),
         ],
       ),
@@ -266,11 +299,14 @@ class PinButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(fontSize: 24),
+        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
-      color: Colors.blue,
+      color: Colors.blue.shade700,
       textColor: Colors.white,
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 22),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
     );
   }
 }

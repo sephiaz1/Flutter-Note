@@ -54,17 +54,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
-        backgroundColor: Colors.teal.shade100,
+        title: Text(
+          'Profile',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Color(0xFF000633),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
+          color: Colors.white,
           onPressed: () {
             Navigator.pop(context);
           },
         ),
       ),
       body: Container(
-        color: Colors.teal.shade100,
+        color: Color(0xFF000633),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
